@@ -19,7 +19,7 @@ export default function Home() {
       </div>
 
        <div className={styles.responsiveCard}>
-          <h1>Welcome to</h1>
+          <h1>Welcome to test</h1>
           <h2>GEA Template App</h2>
           <div style={{ marginTop: '20px' }}>
             <MainButton onClick={() => router.push('/builder')} />
