@@ -1,27 +1,31 @@
 import React from 'react';
-import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import ButtonIcon from './buttonicon';
+import { Menu, MenuButton, MenuList, MenuItem, Box } from '@chakra-ui/react';
 
-function CustomDropdown() {
+// Define a type for the menu items
+interface CustomDropdownProps {
+  buttonLabel: string; // Label for the MenuButton
+  menuItems: React.ReactNode[]; // Array of menu items
+}
+
+function CustomDropdown({ buttonLabel, menuItems }: CustomDropdownProps) {
     return (
-      <Menu>
-        <MenuButton as={Button} 
-          background="none"
-          color="#8C8C8C"
-          borderStyle="none"
-          borderBottom="2px solid #F0F0F0"
-        >
-          Grid
-        </MenuButton>
-        <MenuList>
-          <MenuItem>
-            <ButtonIcon icon={<GridViewOutlinedIcon />} text="2 column equal" />
-          </MenuItem>
-          <MenuItem>2 column wide left</MenuItem>
-          {/* Add more MenuItems as needed */}
-        </MenuList>
-      </Menu>
+        <Menu>
+            <MenuButton as={Box} 
+                background="none"
+                color="#8C8C8C"
+                borderStyle="none"
+                borderBottom="2px solid #F0F0F0"
+            >
+                {buttonLabel}
+            </MenuButton>
+            <MenuList>
+              {menuItems.map((item, index) => (
+                <MenuItem as="div" background="none" border="none" key={index}>
+                  {item}
+                </MenuItem>
+              ))}
+            </MenuList>
+        </Menu>
     );
 }
   
