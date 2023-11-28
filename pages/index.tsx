@@ -1,6 +1,6 @@
 import React from 'react';
-import MainButton from '../app/components/layout/ui/builder/mainbutton'; 
-import SecondButton from '../app/components/layout/ui/builder/secondbutton'; 
+import MainButton from '../app/components/layout/ui/builder/PrimaryButton'; 
+import SecondButton from '../app/components/layout/ui/builder/SecondaryButton'; 
 import styles from '../styles/home.module.css';
 import { useRouter } from 'next/router';
 
