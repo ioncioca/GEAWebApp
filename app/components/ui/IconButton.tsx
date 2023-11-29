@@ -5,7 +5,7 @@ import { useDrag, DragSourceHookSpec } from 'react-dnd';
 interface IconButtonExampleProps {
   icon: ReactElement;
   text: string;
-  type: '2_COLUMN_EQUAL' | '2_COLUMN_WIDE_LEFT' | '2_COLUMN_WIDE_RIGHT' | '3_COLUMN_EQUAL' | 'SINGLE_COLUMN' | 'BANNER';
+  type: '2_COLUMN_EQUAL' | '2_COLUMN_WIDE_LEFT' | '2_COLUMN_WIDE_RIGHT' | '3_COLUMN_EQUAL' | 'SINGLE_COLUMN' | 'BANNER' | 'HERO';
 }
 
 

@@ -15,8 +15,19 @@ function Banner() {
   }));
 
   return (
-    <Box ref={dragRef} w="60vw" h="375px" bg="#020281">
-      <Flex w="100%" h="100%">
+    <Box
+      ref={dragRef}
+      w="60vw"
+      h="375px"
+      bg="#020281"
+      margin="0 auto" // Center the entire Banner component horizontally
+    >
+      <Flex
+        w="100%"
+        h="100%"
+        display="flex"
+        justifyContent="center"
+      >
         <Box w="50%" h="100%" bgImage="url(./assets/gea-dummy.png)" bgSize="cover" bgPos="center">
           {/* Background image is set here */}
         </Box>
