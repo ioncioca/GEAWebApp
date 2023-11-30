@@ -17,10 +17,10 @@ function Banner() {
   return (
     <Box
       ref={dragRef}
-      w="60vw"
+      w="100%"  // Adjusted to 100% of parent container
       h="375px"
       bg="#020281"
-      margin="0 auto" // Center the entire Banner component horizontally
+      margin="0 auto"
     >
       <Flex
         w="100%"
