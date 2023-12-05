@@ -1,22 +1,44 @@
 import React from "react";
 import { Box, VStack, Image } from "@chakra-ui/react";
 import ButtonGroup from '../ui/GroupButton';
-import CustomDropdown from '../builder/ComponentDnD';
+import CustomDropdown from '../builder/Dropdown';
 import ButtonIcon from '../ui/IconButton';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import { useDraggable } from '@dnd-kit/core';
+import { GridLayoutType } from "../builder/GridComponent";
+
+interface DraggableItemProps {
+  id: string;
+  content: React.ReactNode;
+}
 
 
 function Sidebar() {
-  // Banner menu items (example)
+  // Banner menu items
   const bannerMenuItems = [
-    <ButtonIcon icon={<GridViewOutlinedIcon />} text="Banner" type="BANNER" />,
+    <DraggableItem id="banner" content={
+      <ButtonIcon icon={<GridViewOutlinedIcon />} text="Banner" type="BANNER" />
+    } />,
     // ... more banner items
   ];
 
+  // Hero menu items
   const heroMenuItems = [
-    <ButtonIcon icon={<GridViewOutlinedIcon />} text="Hero" type="HERO" />,
+    <DraggableItem id="hero" content={
+      <ButtonIcon icon={<GridViewOutlinedIcon />} text="Hero" type="HERO" />
+    } />,
     // ... more hero items
   ];
+
+// Grid layout menu items
+const gridLayoutMenuItems = [
+  <DraggableItem id="twoColumnEqual" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="2 Column Equal" type="GRID" layoutId="twoColumnEqual"/>} />,
+  <DraggableItem id="twoColumnWideLeft" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="2 Column Wide Left" type="GRID" layoutId="twoColumnWideLeft"/>} />,
+  <DraggableItem id="twoColumnWideRight" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="2 Column Wide Right" type="GRID" layoutId="twoColumnWideRight"/>} />,
+  <DraggableItem id="threeColumnEqual" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="3 Column Equal" type="GRID" layoutId="threeColumnEqual"/>} />,
+  // Add more grid layouts as needed
+];
+
 
   return (
     <Box w="360px" h="100vh" bg="#ffffff" padding="20px">
@@ -25,8 +47,27 @@ function Sidebar() {
         <ButtonGroup />
         <CustomDropdown buttonLabel="Banner" menuItems={bannerMenuItems} />
         <CustomDropdown buttonLabel="Hero" menuItems={heroMenuItems} />
+        <CustomDropdown buttonLabel="Grid Layout" menuItems={gridLayoutMenuItems} />
       </VStack>
     </Box>
+  );
+}
+
+function DraggableItem({ id, content }: DraggableItemProps) {
+  const type = (content as React.ReactElement).props.type;
+
+  // Debugging log to ensure id is correctly set
+  console.log("Creating DraggableItem with ID:", id, "and Type:", type);
+
+  const { attributes, listeners, setNodeRef } = useDraggable({
+    id, // Ensuring this is the specific layout id
+    data: { type, layoutId: id } // Passing both type and specific layout id
+  });
+
+  return (
+    <div ref={setNodeRef} {...listeners} {...attributes}>
+      {content}
+    </div>
   );
 }
 

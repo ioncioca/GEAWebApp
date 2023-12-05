@@ -1,43 +1,28 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from '@chakra-ui/react';
-import { useDrag, DragSourceHookSpec } from 'react-dnd';
+import { useDraggable } from '@dnd-kit/core';
 
 interface IconButtonExampleProps {
-  icon: ReactElement;
+  icon: React.ReactElement;
   text: string;
-  type: '2_COLUMN_EQUAL' | '2_COLUMN_WIDE_LEFT' | '2_COLUMN_WIDE_RIGHT' | '3_COLUMN_EQUAL' | 'SINGLE_COLUMN' | 'BANNER' | 'HERO';
+  type: 'BANNER' | 'HERO' | 'GRID';
+  layoutId?: string; // Add this prop for specific grid layout identifiers
 }
 
+function ButtonIcon({ icon, text, type, layoutId }: IconButtonExampleProps) {
+  const draggableId = layoutId || type; // Use layoutId if available, otherwise use type
 
-function ButtonIcon({ icon, text, type }: IconButtonExampleProps) {
-  const [isMounted, setIsMounted] = useState(false); // Track component mount state
-  const [{ isDragging }, dragRef] = useDrag(() => ({
-    type: 'BUTTON',
-    item: { text, type },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
-
-  // Use a dummy drag source specification with default values when not on the client
-  const [{ isClient }, setIsClient] = useState({ isClient: false });
-
-  useEffect(() => {
-    setIsMounted(true); // Component is mounted on the client
-    setIsClient({ isClient: true }); // Set isClient to true on the client
-  }, []);
-
-  if (!isMounted || !isClient) {
-    // Delay rendering until after client-side hydration
-    return null;
-  }
-
+  const { attributes, listeners, setNodeRef } = useDraggable({
+    id: draggableId,
+    data: { type, layoutId: draggableId }
+  });
   return (
     <Button
-      ref={dragRef}
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
       leftIcon={icon}
       colorScheme="blue"
-      opacity={isDragging ? 0.5 : 1}
     >
       {text}
     </Button>

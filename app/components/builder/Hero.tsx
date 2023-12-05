@@ -1,21 +1,22 @@
 import React from 'react';
 import { Box, Editable, EditablePreview, EditableInput, Flex } from '@chakra-ui/react';
-import { useDrag } from 'react-dnd';
-
-// Define the interface for draggable items
-interface DraggableItem {
-  [x: string]: any;
-  text: string;
-  type: string;
-}
+import { useDraggable } from '@dnd-kit/core';
 
 function Hero() {
-  const [, dragRef] = useDrag(() => ({
-    type: 'HERO', // Specify the type as 'BANNER'
-  }));
+  const {attributes, listeners, setNodeRef} = useDraggable({
+    id: 'hero',
+    data: { type: 'HERO' }, // Ensure this data is set
+  });
 
   return (
-    <Box ref={dragRef} w="80vw" h="375px" bg="#020281">
+    <Box
+      ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      w="100%"
+      h="375px"
+      bg="#020281"
+    >
       <Flex
       w="100%" 
       h="100%"
