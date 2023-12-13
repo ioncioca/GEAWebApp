@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Editable, EditablePreview, EditableInput, Flex } from '@chakra-ui/react';
 import { useDraggable } from '@dnd-kit/core';
 
-function Banner() {
+function Banner({ width = '90%' }) {
   const {attributes, listeners, setNodeRef} = useDraggable({
     id: 'banner',
     data: { type: 'BANNER' },
@@ -10,11 +10,11 @@ function Banner() {
 
   return (
     <Flex justifyContent="center"> {/* Flex container to center the Banner */}
-      <Box
+      <Box 
         ref={setNodeRef}
         {...listeners}
         {...attributes}
-        w="50vw" // Width set to 90% of the viewport width
+        w={width}
         h="375px"
         bg="#020281"
         margin="32px auto"
@@ -22,8 +22,6 @@ function Banner() {
         <Flex
           w="100%"
           h="100%"
-          display="flex"
-          justifyContent="center"
         >
           <Box w="50%" h="100%" bgImage="url(./assets/gea-dummy.png)" bgSize="cover" bgPos="center">
             {/* Background image is set here */}

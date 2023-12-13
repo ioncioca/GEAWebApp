@@ -1,23 +1,26 @@
 import React from 'react';
 import { Box, Button, Grid, GridItem } from '@chakra-ui/react';
 import { useDroppable } from '@dnd-kit/core';
+import Banner from './Banner'; // Import Banner component
+import Hero from './Hero';   // Import Hero component
 
 export type GridLayoutType = 'twoColumnEqual' | 'twoColumnWideLeft' | 'twoColumnWideRight' | 'threeColumnEqual' | 'singleColumn' | string;
 
 interface DraggableItem {
   id: string;
   type: string;
+  layoutType?: GridLayoutType;
   // Add any other properties you need for draggable items
 }
 
 interface GridComponentProps {
   layout: GridLayoutType;
-  items: { [key: string]: DraggableItem[] }; // Array of items for each column
-  onDrop: (droppableId: string, draggableId: string) => void;
+  items: { [key: string]: DraggableItem[] };
+  onDrop: (droppableId: string, draggableId: string, draggableItem: DraggableItem) => void;
 }
 
 const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) => {
-  const renderDroppableGridItem = (key: React.Key | null | undefined) => {
+  const renderDroppableGridItem = (key: number) => {
     const droppableId = `droppable-${layout}-${key}`;
     const { setNodeRef, isOver } = useDroppable({ id: droppableId });
 
@@ -25,18 +28,32 @@ const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) 
 
     return (
       <GridItem ref={setNodeRef} key={key} border="2px dashed #020281" p={40} bg={isOver ? 'lightgray' : 'white'}>
-        {droppedItems.map((item) => (
-          // Render your component based on the item type
-          // This is a placeholder, replace with your actual component rendering logic
-          <div key={item.id}>{item.type}</div>
-        ))}
-        <Button colorScheme="#020281">Add Component Here</Button>
+        {droppedItems.map((item) => {
+          // Render different components based on item type
+          switch (item.type) {
+            case 'BANNER':
+              return <Banner key={item.id} width="100%" />;
+            case 'HERO':
+              return <Hero key={item.id} />;
+            default:
+              return <div key={item.id}>{item.type}</div>;
+          }
+        })}
       </GridItem>
     );
   };
 
+
+
   const renderGridItems = () => {
-    const numberOfColumns = layout === 'threeColumnEqual' ? 3 : 2;
+    const numberOfColumns = {
+      'twoColumnEqual': 2,
+      'twoColumnWideLeft': 2,
+      'twoColumnWideRight': 2,
+      'threeColumnEqual': 3,
+      'singleColumn': 1,
+    }[layout] || 1;
+
     return Array.from({ length: numberOfColumns }, (_, index) => renderDroppableGridItem(index));
   };
 
@@ -52,7 +69,9 @@ const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) 
     <Box>
       <Grid
         templateColumns={gridTemplateColumns}
-        gap={4}
+        gap={32}
+        margin="32px"
+        padding="0px"
         overflow="hidden"
       >
         {renderGridItems()}
