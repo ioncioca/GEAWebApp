@@ -9,7 +9,7 @@ function Banner({ width = '90%' }) {
   });
 
   return (
-    <Flex justifyContent="center"> {/* Flex container to center the Banner */}
+    <Flex justifyContent="center"> 
       <Box 
         ref={setNodeRef}
         {...listeners}
@@ -24,7 +24,6 @@ function Banner({ width = '90%' }) {
           h="100%"
         >
           <Box w="50%" h="100%" bgImage="url(./assets/gea-dummy.png)" bgSize="cover" bgPos="center">
-            {/* Background image is set here */}
           </Box>
           <Box w="50%" p="20px" color="white">
             <Editable defaultValue="Header" fontSize="2xl">

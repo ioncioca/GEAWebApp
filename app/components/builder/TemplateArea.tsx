@@ -6,6 +6,9 @@ import Hero from './Hero';
 import GridComponent from './GridComponent';
 import { GridLayoutType } from './GridComponent';
 import { DraggableItem } from '@/app/types'
+import PageContent from './PageContent';
+import RichText from './RichText';
+import ImageBlock from './Image';
 
 export interface TemplateItem {
   id: string;
@@ -36,12 +39,18 @@ const TemplateArea: React.FC<TemplateAreaProps> = ({ items,gridItems, onDrop }) 
       {item.layoutType && 
         <GridComponent 
           layout={item.layoutType} 
-          items={gridItems} // Pass the gridItems here
+          items={gridItems}
           onDrop={(droppableId, draggableId, draggableItem) => onDrop(droppableId, draggableId, draggableItem)} 
         />
       }
     </div>
   );
+  case 'PAGE':
+    return <PageContent key={key} />;
+    case 'TEXT':
+    return <RichText key={key} />;
+    case 'IMAGE':
+      return <ImageBlock key={key} />;
       default:
         return null;
     }

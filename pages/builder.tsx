@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from '../app/components/layout/Sidebar';
 import TemplateArea from '../app/components/builder/TemplateArea';
-import { TemplateItem } from '../app/components/builder/TemplateArea';
-import GridComponent, { GridLayoutType } from '../app/components/builder/GridComponent';
+import { GridLayoutType } from '../app/components/builder/GridComponent';
 import { DndContext, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 
 interface DraggableItem {
   id: string;

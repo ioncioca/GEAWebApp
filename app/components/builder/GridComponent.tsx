@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, Button, Grid, GridItem } from '@chakra-ui/react';
 import { useDroppable } from '@dnd-kit/core';
-import Banner from './Banner'; // Import Banner component
-import Hero from './Hero';   // Import Hero component
+import Banner from './Banner'; 
+import Hero from './Hero';  
+import PageContent from './PageContent';
+import RichText from './RichText';
 
 export type GridLayoutType = 'twoColumnEqual' | 'twoColumnWideLeft' | 'twoColumnWideRight' | 'threeColumnEqual' | 'singleColumn' | string;
 
@@ -10,7 +12,6 @@ interface DraggableItem {
   id: string;
   type: string;
   layoutType?: GridLayoutType;
-  // Add any other properties you need for draggable items
 }
 
 interface GridComponentProps {
@@ -35,6 +36,8 @@ const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) 
               return <Banner key={item.id} width="100%" />;
             case 'HERO':
               return <Hero key={item.id} />;
+              case 'PAGE':
+                return <PageContent key={item.id} />;
             default:
               return <div key={item.id}>{item.type}</div>;
           }

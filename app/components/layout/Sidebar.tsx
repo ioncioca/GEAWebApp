@@ -5,7 +5,6 @@ import CustomDropdown from '../builder/Dropdown';
 import ButtonIcon from '../ui/IconButton';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useDraggable } from '@dnd-kit/core';
-import { GridLayoutType } from "../builder/GridComponent";
 
 interface DraggableItemProps {
   id: string;
@@ -19,7 +18,6 @@ function Sidebar() {
     <DraggableItem id="banner" content={
       <ButtonIcon icon={<GridViewOutlinedIcon />} text="Banner" type="BANNER" />
     } />,
-    // ... more banner items
   ];
 
   // Hero menu items
@@ -27,7 +25,6 @@ function Sidebar() {
     <DraggableItem id="hero" content={
       <ButtonIcon icon={<GridViewOutlinedIcon />} text="Hero" type="HERO" />
     } />,
-    // ... more hero items
   ];
 
 // Grid layout menu items
@@ -36,8 +33,21 @@ const gridLayoutMenuItems = [
   <DraggableItem id="twoColumnWideLeft" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="2 Column Wide Left" type="GRID" layoutId="twoColumnWideLeft"/>} />,
   <DraggableItem id="twoColumnWideRight" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="2 Column Wide Right" type="GRID" layoutId="twoColumnWideRight"/>} />,
   <DraggableItem id="threeColumnEqual" content={<ButtonIcon icon={<GridViewOutlinedIcon />} text="3 Column Equal" type="GRID" layoutId="threeColumnEqual"/>} />,
-  // Add more grid layouts as needed
 ];
+
+const pageMenuItems = [
+  <DraggableItem id="page" content={
+    <ButtonIcon icon={<GridViewOutlinedIcon />} text="Card Standard" type="PAGE" />
+  } />,
+  <DraggableItem id="text" content={
+    <ButtonIcon icon={<GridViewOutlinedIcon />} text="Rich Text" type="TEXT" />
+  } />,
+  <DraggableItem id="image" content={
+    <ButtonIcon icon={<GridViewOutlinedIcon />} text="Image Block" type="IMAGE" />
+  } />,
+];
+
+
 
 
   return (
@@ -48,6 +58,7 @@ const gridLayoutMenuItems = [
         <CustomDropdown buttonLabel="Banner" menuItems={bannerMenuItems} />
         <CustomDropdown buttonLabel="Hero" menuItems={heroMenuItems} />
         <CustomDropdown buttonLabel="Grid Layout" menuItems={gridLayoutMenuItems} />
+        <CustomDropdown buttonLabel="Page Content" menuItems={pageMenuItems} />
       </VStack>
     </Box>
   );

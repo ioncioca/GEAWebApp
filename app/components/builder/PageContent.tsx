@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, Editable, EditablePreview, EditableInput, Flex } from '@chakra-ui/react';
 import { useDraggable } from '@dnd-kit/core';
 
-function Hero() {
+function PageContent() {
   const {attributes, listeners, setNodeRef} = useDraggable({
-    id: 'hero',
-    data: { type: 'HERO' },
+    id: 'page',
+    data: { type: 'PAGE' },
   });
 
   return (
@@ -14,14 +14,17 @@ function Hero() {
       {...listeners}
       {...attributes}
       w="100%"
-      h="375px"
+      h="375px" // Adjusted height to accommodate both image and text
       bg="#020281"
     >
       <Flex
-      w="100%" 
-      h="100%"
+        flexDirection="column" // Changed to column
+        w="100%" 
+        h="100%"
       >
-        <Box w="50%" p="20px" color="white">
+        <Box w="100%" h="100%" bgImage="url(./assets/gea-dummy.png)" bgSize="cover" bgPos="center">
+        </Box>
+        <Box w="100%" p="20px" color="white">
           <Editable defaultValue="Header" fontSize="2xl">
             <EditablePreview />
             <EditableInput />
@@ -35,11 +38,9 @@ function Hero() {
             <EditableInput />
           </Editable>
         </Box>
-        <Box w="50%" h="100%" bgImage="url(./assets/gea-dummy.png)" bgSize="cover" bgPos="center">
-        </Box>
       </Flex>
     </Box>
   );
 }
 
-export default Hero;
+export default PageContent;
