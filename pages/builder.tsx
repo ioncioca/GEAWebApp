@@ -68,6 +68,52 @@ function Builder() {
     setDragStart({ x: 0, y: 0 });
   };
 
+  const handleSaveTemplate = async () => {
+    try {
+      const templateData = {
+        items: droppedItems,
+        gridItems: gridItems
+      };
+  
+      const response = await fetch('http://localhost:4001/api/templates', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(templateData)
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const responseData = await response.json();
+      console.log('Save successful:', responseData);
+    } catch (error) {
+      console.error('Error saving template:', error);
+    }
+  };
+  
+  const handleRetrieveTemplate = async (templateId: string) => {
+    try {
+      const response = await fetch(`http://localhost:4001/api/templates/${templateId}`);
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const template = await response.json();
+      console.log('Retrieved template:', template);
+  
+      // Parse the template_json field to an object
+      const parsedTemplate = JSON.parse(template.template_json);
+      setDroppedItems(parsedTemplate.items || []);
+      setGridItems(parsedTemplate.gridItems || {});
+    } catch (error) {
+      console.error('Error retrieving template:', error);
+    }
+  };
+  
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <HStack spacing={0} w="100vw" h="100vh" bg="#EBEBEB">
@@ -75,6 +121,8 @@ function Builder() {
         <VStack w="calc(100% - 360px)" h="100vh" overflow="auto">
           <TemplateArea items={droppedItems} gridItems={gridItems} onDrop={handleDrop} />
         </VStack>
+        <button onClick={handleSaveTemplate}>Save Template</button>
+        <button onClick={() => handleRetrieveTemplate('123')}>Retrieve Template</button>
       </HStack>
     </DndContext>
   );

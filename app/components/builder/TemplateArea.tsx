@@ -70,7 +70,7 @@ const TemplateArea: React.FC<TemplateAreaProps> = ({ items,gridItems, onDrop }) 
         overflow: 'auto'
       }}
     >
-      {items.map(renderItem)}
+      {items.map((item, index) => renderItem(item, index))}
     </div>
   );
 }
