@@ -23,7 +23,7 @@ app.get('/api/test', (_req, res) => {
   
     const sql = `INSERT INTO templates (template_json) VALUES (?)`;
   
-    db.query(sql, [JSON.stringify(templateData)], (err, result) => {
+    db.query(sql, [JSON.stringify(templateData)], (err: { message: any; }, result: unknown) => {
       if (err) {
         console.error('Error saving template:', err);
         res.status(500).json({ error: err.message });
@@ -42,7 +42,7 @@ app.get('/api/test', (_req, res) => {
     const templateId = req.params.id;
     const sql = 'SELECT * FROM templates WHERE template_id = 2';
   
-    db.query(sql, [templateId], (err, result) => {
+    db.query(sql, [templateId], (err: { message: any; }, result: string | any[]) => {
       if (err) {
         console.error('Error fetching template:', err);
         res.status(500).json({ error: err.message });
@@ -59,7 +59,7 @@ app.get('/api/test', (_req, res) => {
   });
 
 app.get('/api', (_req, res) => {
-    db.query('SELECT * FROM templates', (err, results) => {
+    db.query('SELECT * FROM templates', (err: { message: any; }, results: string | any[]) => {
       if (err) {
         res.status(500).json({ error: err.message });
         return;
