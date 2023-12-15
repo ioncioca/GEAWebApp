@@ -1,32 +1,41 @@
 import React from 'react';
-import { Menu, MenuButton, MenuList, MenuItem, Box } from '@chakra-ui/react';
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box } from '@chakra-ui/react';
 
-// Define a type for the menu items
 interface CustomDropdownProps {
-  buttonLabel: string; // Label for the MenuButton
-  menuItems: React.ReactNode[]; // Array of menu items
+  buttonLabel: string; // Label for the AccordionButton
+  menuItems: React.ReactNode[]; // Array of items to be displayed in AccordionPanel
+  isOpen: boolean; // New prop to control the open state
+  onToggle: () => void; 
 }
 
-function CustomDropdown({ buttonLabel, menuItems }: CustomDropdownProps) {
+function CustomDropdown({ buttonLabel, menuItems, isOpen, onToggle }: CustomDropdownProps) {
     return (
-        <Menu>
-            <MenuButton as={Box} 
-                background="none"
-                color="#8C8C8C"
-                borderStyle="none"
-                borderBottom="2px solid #F0F0F0"
-            >
-                {buttonLabel}
-            </MenuButton>
-            <MenuList>
-              {menuItems.map((item, index) => (
-                <MenuItem as="div" background="none" border="none" key={index}>
-                  {item}
-                </MenuItem>
-              ))}
-            </MenuList>
-        </Menu>
+        <Accordion  allowToggle index={isOpen ? 0 : -1} onChange={onToggle}>
+          
+            <AccordionItem border="none">
+                <h2>
+                    <AccordionButton
+                        background="none"
+                        color="#8C8C8C"
+                        borderStyle="none"
+                        borderBottom="2px solid #F0F0F0"
+                        _expanded={{ borderBottom: "2px solid #020281" }} // Optional: Style for when the accordion is expanded
+                    >
+                        <Box as="span" flex="1" textAlign="left" marginBottom='8px'>
+                            {buttonLabel}
+                        </Box>
+                    </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                    {menuItems.map((item, index) => (
+                        <Box as="div" background="none" border="none" key={index}>
+                            {item}
+                        </Box>
+                    ))}
+                </AccordionPanel>
+            </AccordionItem>
+        </Accordion>
     );
 }
-  
+
 export default CustomDropdown;

@@ -16,6 +16,7 @@ function Hero() {
       w="100%"
       h="375px"
       bg="#020281"
+      marginBottom="32px"
     >
       <Flex
       w="100%" 

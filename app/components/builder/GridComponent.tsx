@@ -5,6 +5,7 @@ import Banner from './Banner';
 import Hero from './Hero';  
 import PageContent from './PageContent';
 import RichText from './RichText';
+import ImageBlock from './Image';
 
 export type GridLayoutType = 'twoColumnEqual' | 'twoColumnWideLeft' | 'twoColumnWideRight' | 'threeColumnEqual' | 'singleColumn' | string;
 
@@ -38,6 +39,8 @@ const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) 
               return <Hero key={item.id} />;
               case 'PAGE':
                 return <PageContent key={item.id} />;
+                case 'IMAGE':
+                  return <ImageBlock key={item.id} />;
             default:
               return <div key={item.id}>{item.type}</div>;
           }

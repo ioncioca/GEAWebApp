@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, VStack, Image } from "@chakra-ui/react";
+import { Box, VStack, Image, Accordion } from "@chakra-ui/react";
 import ButtonGroup from '../ui/GroupButton';
 import CustomDropdown from '../builder/Dropdown';
 import ButtonIcon from '../ui/IconButton';
@@ -13,6 +13,11 @@ interface DraggableItemProps {
 
 
 function Sidebar() {
+  const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null);
+
+  const handleDropdownToggle = (dropdownId: string) => {
+    setActiveDropdown(activeDropdown === dropdownId ? null : dropdownId);
+  };
   // Banner menu items
   const bannerMenuItems = [
     <DraggableItem id="banner" content={
@@ -55,10 +60,14 @@ const pageMenuItems = [
       <VStack align="stretch" spacing="20px">
         <Image src="/assets/logo.svg" alt="Logo" boxSize="50px" alignSelf="center" />
         <ButtonGroup />
-        <CustomDropdown buttonLabel="Banner" menuItems={bannerMenuItems} />
-        <CustomDropdown buttonLabel="Hero" menuItems={heroMenuItems} />
-        <CustomDropdown buttonLabel="Grid Layout" menuItems={gridLayoutMenuItems} />
-        <CustomDropdown buttonLabel="Page Content" menuItems={pageMenuItems} />
+        <CustomDropdown buttonLabel="Banner" menuItems={bannerMenuItems} isOpen={activeDropdown === 'Banner'}
+          onToggle={() => handleDropdownToggle('Banner')}/>
+        <CustomDropdown buttonLabel="Hero" menuItems={heroMenuItems} isOpen={activeDropdown === 'Hero'}
+          onToggle={() => handleDropdownToggle('Hero')}/>
+        <CustomDropdown buttonLabel="Grid Layout" menuItems={gridLayoutMenuItems} isOpen={activeDropdown === 'Grid Layout'}
+          onToggle={() => handleDropdownToggle('Grid Layout')} />
+        <CustomDropdown buttonLabel="Page Content" menuItems={pageMenuItems} isOpen={activeDropdown === 'Page Content'}
+          onToggle={() => handleDropdownToggle('Page Content')}/>
       </VStack>
     </Box>
   );
