@@ -5,7 +5,7 @@ import Banner from './Banner';
 import Hero from './Hero';
 import GridComponent from './GridComponent';
 import { GridLayoutType } from './GridComponent';
-import { DraggableItem } from '@/types'
+import { DraggableItem } from '../../types'
 import PageContent from './PageContent';
 import RichText from './RichText';
 import ImageBlock from './Image';
