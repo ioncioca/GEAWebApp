@@ -9,7 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 // Enable All CORS Requests for simplicity, or configure as needed
 app.use((0, cors_1.default)());
-const port = 4001;
+const port = 4000;
 app.use(express_1.default.json());
 app.get('/api/test', (_req, res) => {
     res.json({ message: 'Success! Backend is responding.' });
