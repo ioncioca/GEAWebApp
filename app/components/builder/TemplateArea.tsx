@@ -1,11 +1,11 @@
 // TemplateArea.tsx
 import React from 'react';
-import { useDroppable } from '@dnd-kit/core';
+import { useDroppable } from '@dnd-kit/core'; 
 import Banner from './Banner';
 import Hero from './Hero';
 import GridComponent from './GridComponent';
 import { GridLayoutType } from './GridComponent';
-import { DraggableItem } from '@/app/types'
+import { DraggableItem } from '@/types'
 import PageContent from './PageContent';
 import RichText from './RichText';
 import ImageBlock from './Image';

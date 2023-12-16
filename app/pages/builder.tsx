@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Sidebar from '../app/components/layout/Sidebar';
-import TemplateArea from '../app/components/builder/TemplateArea';
-import { GridLayoutType } from '../app/components/builder/GridComponent';
+import Sidebar from '../components/layout/Sidebar';
+import TemplateArea from '../components/builder/TemplateArea';
+import { GridLayoutType } from '../components/builder/GridComponent';
 import { DndContext, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
 import { HStack, VStack } from '@chakra-ui/react';
 
