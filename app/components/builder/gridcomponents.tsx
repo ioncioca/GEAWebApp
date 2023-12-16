@@ -1,11 +1,11 @@
+'use client'
 import React from 'react';
-import { Box, Button, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import { useDroppable } from '@dnd-kit/core';
-import Banner from './Banner'; 
-import Hero from './Hero';  
-import PageContent from './PageContent';
-import RichText from './RichText';
-import ImageBlock from './Image';
+import Banner from './banner'; 
+import Hero from './hero';  
+import PageContent from './pagecontent';
+import ImageBlock from './image';
 
 export type GridLayoutType = 'twoColumnEqual' | 'twoColumnWideLeft' | 'twoColumnWideRight' | 'threeColumnEqual' | 'singleColumn' | string;
 
@@ -75,7 +75,7 @@ const GridComponent: React.FC<GridComponentProps> = ({ layout, items, onDrop }) 
     <Box>
       <Grid
         templateColumns={gridTemplateColumns}
-        gap={32}
+        gap={4}
         margin="32px"
         padding="0px"
         overflow="hidden"

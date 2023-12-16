@@ -1,5 +1,6 @@
+'use client'
 import React from 'react';
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box } from '@chakra-ui/react';
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, Box}  from '@chakra-ui/react';
 
 interface CustomDropdownProps {
   buttonLabel: string; // Label for the AccordionButton

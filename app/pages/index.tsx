@@ -1,6 +1,6 @@
 import React from 'react';
-import MainButton from '../components/ui/PrimaryButton'; 
-import SecondButton from '../components/ui/SecondaryButton'; 
+import MainButton from '../components/ui/primarybutton'; 
+import SecondButton from '../components/ui/secondarybutton'; 
 import styles from '../styles/home.module.css';
 import { useRouter } from 'next/router';
 
@@ -12,7 +12,7 @@ export default function Home() {
       {/* Left Side - Image with Padding */}
       <div style={{ width: 'calc(45%)', height: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0px' }}>
         <img 
-          src="https://www.imgbly.com/ib/Q8I4Mq5vPY.png" 
+          src="./assets/gea-globe.png" 
           alt="GEA Image" 
           style={{ maxWidth: '100%', maxHeight: '100%' }} 
         />

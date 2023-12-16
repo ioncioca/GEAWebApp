@@ -1,8 +1,9 @@
+'use client'
 import React from "react";
-import { Box, VStack, Image, Accordion } from "@chakra-ui/react";
-import ButtonGroup from '../ui/GroupButton';
-import CustomDropdown from '../builder/Dropdown';
-import ButtonIcon from '../ui/IconButton';
+import { Box, VStack, Image } from "@chakra-ui/react";
+import ButtonGroup from '../ui/groupbutton';
+import CustomDropdown from '../builder/dropdown';
+import ButtonIcon from '../ui/iconbutton';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { useDraggable } from '@dnd-kit/core';
 

@@ -1,14 +1,15 @@
 // TemplateArea.tsx
+'use client'
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core'; 
-import Banner from './Banner';
-import Hero from './Hero';
-import GridComponent from './GridComponent';
-import { GridLayoutType } from './GridComponent';
+import Banner from './banner';
+import Hero from './hero';
+import GridComponent from './gridcomponents';
+import { GridLayoutType } from './gridcomponents';
 import { DraggableItem } from '../../types'
-import PageContent from './PageContent';
-import RichText from './RichText';
-import ImageBlock from './Image';
+import PageContent from './pagecontent';
+import RichText from './richtext';
+import ImageBlock from './image';
 
 export interface TemplateItem {
   id: string;
