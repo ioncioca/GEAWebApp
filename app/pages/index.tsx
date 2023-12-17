@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import MainButton from '../components/ui/primarybutton'; 
 import SecondButton from '../components/ui/secondarybutton'; 
