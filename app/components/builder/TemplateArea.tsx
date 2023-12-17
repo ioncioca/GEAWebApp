@@ -1,5 +1,4 @@
-// TemplateArea.tsx
-'use client'
+"use client";
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core'; 
 import Banner from './banner';

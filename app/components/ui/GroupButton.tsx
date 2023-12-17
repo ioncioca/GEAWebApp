@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from 'react';
 import { Box, Button, ButtonGroup } from '@chakra-ui/react';
 
