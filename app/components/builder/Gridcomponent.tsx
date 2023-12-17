@@ -2,10 +2,10 @@
 import React from 'react';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
 import { useDroppable } from '@dnd-kit/core';
-import Banner from './banner'; 
-import Hero from './hero';  
-import PageContent from './pagecontent';
-import ImageBlock from './image';
+import Banner from './Banner'; 
+import Hero from './Hero';  
+import PageContent from './Pagecontent';
+import ImageBlock from './Image';
 
 export type GridLayoutType = 'twoColumnEqual' | 'twoColumnWideLeft' | 'twoColumnWideRight' | 'threeColumnEqual' | 'singleColumn' | string;
 
