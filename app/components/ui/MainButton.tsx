@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';

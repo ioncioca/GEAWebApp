@@ -1,7 +1,6 @@
-"use client";
 import React from 'react';
-import MainButton from '../components/ui/Primarybutton'; 
-import SecondButton from '../components/ui/Secondarybutton'; 
+import MainButton from '../components/ui/primarybutton'; 
+import SecondButton from '../components/ui/secondarybutton'; 
 import styles from '../styles/home.module.css';
 import { useRouter } from 'next/router';
 

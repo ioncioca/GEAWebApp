@@ -1,8 +1,8 @@
-"use client";
+'use client'
 import React, { useState } from 'react';
-import Sidebar from '../components/layout/Sidebar';
-import TemplateArea from '../components/builder/Templatearea';
-import { GridLayoutType } from '../components/builder/Gridcomponent';
+import Sidebar from '../components/layout/sidebar';
+import TemplateArea from '../components/builder/templatearea';
+import { GridLayoutType } from '../components/builder/gridcomponent';
 import { DndContext, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
 import { HStack, VStack } from '@chakra-ui/react';
 

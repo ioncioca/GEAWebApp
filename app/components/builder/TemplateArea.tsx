@@ -1,14 +1,14 @@
-"use client";
+'use client'
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core'; 
-import Banner from './Banner';
-import Hero from './Hero';
-import GridComponent from './Gridcomponent';
-import { GridLayoutType } from './Gridcomponent';
+import Banner from './banner';
+import Hero from './hero';
+import GridComponent from './gridcomponent';
+import { GridLayoutType } from './gridcomponent';
 import { DraggableItem } from '../../types'
-import PageContent from './Pagecontent';
-import RichText from './Richtext';
-import ImageBlock from './Image';
+import PageContent from './pagecontent';
+import RichText from './richtext';
+import ImageBlock from './image';
 
 export interface TemplateItem {
   id: string;
